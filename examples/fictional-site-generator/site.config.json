@@ -1,0 +1,8 @@
+{
+  "title": "Example Site",
+  "nav": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "About", "href": "about-us.html" }
+  ],
+  "footer": "Example Site — fictional sample"
+}

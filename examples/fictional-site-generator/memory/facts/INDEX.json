@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "updated": "2026-08-02",
+  "entries": [
+    {
+      "id": "f001",
+      "slug": "build-output-overwritten-on-rebuild",
+      "title": "build/ is generated; a hand-edit survives until the next build and is then gone",
+      "status": "verified",
+      "feature": null,
+      "coldStart": true,
+      "scope": "any hand-edit of anything under build/",
+      "verified": "edited build/index.html, ran node build.js, the edit was gone",
+      "evidence": "memory/log/003-20260803-rename-and-run.md",
+      "path": "memory/facts/f001-build-output-overwritten-on-rebuild.md"
+    },
+    {
+      "id": "f002",
+      "slug": "config-is-the-source-of-truth",
+      "title": "site.config.json feeds every rendered page, so a config edit survives rebuilds",
+      "status": "verified",
+      "feature": null,
+      "coldStart": false,
+      "scope": "values that site.config.json declares (site title, nav, footer)",
+      "verified": "changed title in site.config.json, rebuilt, the new title appeared in every page",
+      "evidence": "build.js",
+      "path": "memory/facts/f002-config-is-the-source-of-truth.md"
+    }
+  ]
+}

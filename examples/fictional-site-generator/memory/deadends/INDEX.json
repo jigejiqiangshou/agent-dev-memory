@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "updated": "2026-08-04",
+  "entries": [
+    {
+      "id": "e001",
+      "slug": "client-side-page-loading",
+      "title": "Loading page fragments in the browser, to avoid rebuilding per-page HTML",
+      "status": "reopened",
+      "feature": "001-static-site",
+      "reason": "constraint-violation",
+      "reopenIf": "the offline requirement is dropped, or bundling a runtime becomes allowed",
+      "scope": "avoiding per-page HTML generation",
+      "evidence": "memory/log/003-20260803-rename-and-run.md",
+      "path": "memory/deadends/e001-client-side-page-loading.md"
+    }
+  ]
+}

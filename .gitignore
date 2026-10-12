@@ -1,0 +1,6 @@
+# generated pages in the fictional example
+build/*.html
+
+# local scratch
+*.tmp
+.selfcheck.js

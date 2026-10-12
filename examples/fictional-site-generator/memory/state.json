@@ -1,30 +1,28 @@
 {
-  "schema": 1,
-  "updated": "2026-08-02",
-  "focus": "Ship a minimal static site generator that turns content/*.md into build/*.html.",
+  "schema": 2,
+  "updated": "2026-08-04",
+  "focus": "Add breadcrumb navigation generated from the content directory structure.",
   "blockers": [],
-  "next": "Add a single build.js entry that reads content/index.md and writes build/index.html.",
+  "next": "Emit the breadcrumb trail from the page's content path in the existing layout template, then rebuild and check one nested page.",
   "artifacts": [
-    {
-      "path": "build/artifact-notes.md",
-      "kind": "notes",
-      "note": "Spec notes and the project-chosen artifact index format."
-    },
-    {
-      "path": "build.js",
-      "kind": "tool",
-      "note": "Planned entry script; not created yet."
-    }
+    { "path": "build.js", "kind": "tool", "note": "Single entry that turns content/*.md plus site.config.json into build/*.html." },
+    { "path": "build/artifact-notes.md", "kind": "notes", "note": "Conventions and the artifact index format chosen by this project." },
+    { "path": "specs/001-static-site/constitution.md", "kind": "spec", "note": "Project constraints; owns the generated-output rule." },
+    { "path": "memory/facts/INDEX.json", "kind": "index", "note": "Verified facts; query this before opening a body." },
+    { "path": "memory/deadends/INDEX.json", "kind": "index", "note": "Ruled-out routes; query this before declaring a route impossible." }
   ],
   "decisions": [
-    {
-      "id": "001",
-      "topic": "URL routing = flat files",
-      "path": "memory/log/001-routing-decision.md"
-    }
+    { "id": "001", "topic": "URL routing = flat files", "path": "memory/log/001-20260801-routing-decision.md" },
+    { "id": "002", "topic": "Config edits, never edits to build output", "path": "memory/log/002-20260802-build-entry.md" },
+    { "id": "003", "topic": "Rename routed through config", "path": "memory/log/003-20260803-rename-and-run.md" }
   ],
+  "memoryStores": {
+    "facts": "memory/facts/INDEX.json",
+    "deadends": "memory/deadends/INDEX.json"
+  },
   "notes": [
     "All paths in this file are repository-relative, so they do not change when state_root moves.",
+    "Direction and constraints live in specs/001-static-site/; memory does not restate them.",
     "build/ is generated output; safe to delete and rebuild."
   ]
 }

@@ -9,10 +9,17 @@ Derived by abstracting session-handover style systems. This file is documentatio
 | Bounded hot snapshot | Short hot state under `state_root` |
 | Machine-checkable hot state | JSON container (`state.json`) with fixed five-question field names |
 | Append-only decision history | `{state_root}/log/` or equivalent |
-| Cold-start order | Hot → optional log → confirm next |
+| Append-only verified-fact history | `{state_root}/facts/` with a JSON index and free-form bodies |
+| Append-only ruled-out history | `{state_root}/deadends/` with a revisit condition per entry |
+| Index before bodies | Fixed-path `INDEX.json` as the single query entry point; bodies stay contract-free |
+| No method, no fact | `verified` is required for `status: verified`, otherwise the entry is `hypothesis` |
+| Expensive-and-invisible preconditions | A capped `coldStart` flag on facts, so unknown unknowns are caught |
+| Cold-start order | Spec → hot state → `coldStart` facts → optional log |
 | Persist on end / switch / compaction | Workflow triggers |
+| Two trigger kinds | Session-driven (`state`, `log`) vs event-driven (`facts`, `deadends`) |
 | Receipt after persist | Tell user path + time |
 | Separate activity from archive | Hot vs cold layers |
+| Memory holds past and present, not direction | Direction routes to the project's spec |
 
 ## Discard (do not put in generic skill)
 
@@ -24,6 +31,9 @@ One distinction matters when reading this table: fixed *field names* for a machi
 | Fixed phase numbering / domain pipelines | Project-specific |
 | Mandatory rigid section templates or `NN+topic` naming | Conflicts with flexible retention |
 | Rigid *semantic* templates (fixed prose sections, forced numbering) | Project-specific; format freedom is the point |
+| A fixed format for the fact / dead-end bodies | The index carries the contract; the bodies stay free-form |
+| Copying spec constraints into the fact library | Guarantees drift; the spec wins on conflict |
+| Storing direction or roadmaps in memory when the project has a spec | Duplicates the authority and goes stale |
 | Checklist item that requires files to exist before the step that creates them | Circular gate |
 | Absolute machine user paths | Non-portable / leaking |
 | Domain metrics, model names, dataset paths | Context pollution |
