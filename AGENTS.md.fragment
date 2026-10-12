@@ -1,0 +1,10 @@
+## Agent memory
+
+- Use skill `agent-dev-memory` for cold start, handoff, and progress save.
+- `state_root`: `memory/` (change if needed).
+- Hot state: `state_root/state.json` — valid JSON, required fields `schema`, `updated`, `focus`, `blockers`, `next`, `artifacts`, `decisions`; empty arrays mean "none".
+- Legacy `STATE.md` / `DEV_STATE.md` under `state_root`: read it, migrate into `state.json`, and delete the old file in the same handoff — never keep both.
+- Decision details: append under `memory/log/` (or equivalent) as Markdown; do not bloat hot state.
+- Artifacts stay in the project tree (or paths declared here); memory stores path references only, not file bodies.
+- On session end, task switch, or before compaction: update hot state; use Git for version backup—do not invent a second backup tool.
+- Full procedure: installed skill `agent-dev-memory` (`SKILL.md` + `references/`).

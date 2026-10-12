@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "updated": "2026-08-02",
+  "focus": "Ship a minimal static site generator that turns content/*.md into build/*.html.",
+  "blockers": [],
+  "next": "Add a single build.js entry that reads content/index.md and writes build/index.html.",
+  "artifacts": [
+    {
+      "path": "build/artifact-notes.md",
+      "kind": "notes",
+      "note": "Spec notes and the project-chosen artifact index format."
+    },
+    {
+      "path": "build.js",
+      "kind": "tool",
+      "note": "Planned entry script; not created yet."
+    }
+  ],
+  "decisions": [
+    {
+      "id": "001",
+      "topic": "URL routing = flat files",
+      "path": "memory/log/001-routing-decision.md"
+    }
+  ],
+  "notes": [
+    "All paths in this file are repository-relative, so they do not change when state_root moves.",
+    "build/ is generated output; safe to delete and rebuild."
+  ]
+}
