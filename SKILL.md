@@ -30,7 +30,7 @@ description: >-
 2. 解析热状态文件,按以下顺序取**第一个**命中:
    1. `{state_root}/state.json`(规范名,契约见 [`references/semantics.md`](references/semantics.md))。解析失败按 [`references/workflow.md`](references/workflow.md) §Failure handling 修复,**不得**在解析失败时继续"续接"叙事;
    2. `{state_root}/STATE.json` / `State.json`(大小写回退);
-   3. 存量:`{state_root}/STATE.md` / `DEV_STATE.md`,读到后按 workflow §Migrate legacy 转为 `state.json`,并在同一次交接中删除旧文件;
+   3. 存量:`{state_root}/STATE.md` / `DEV_STATE.md`:先按上一步取到 spec,再按 workflow §Migrate legacy 转为 `state.json`,并在同一次交接中删除旧文件(冷启动第 1 步不受此路径变化影响);
    4. 全部缺失:按契约新建,并在回执中说明这是**新建**而非续接。
 3. **读 `coldStart: true` 的事实条目**(只读这些,不读全量事实索引):`{state_root}/facts/INDEX.json`(路径以 `memoryStores.facts` 为准)。
 4. 仅当需要细节时,按热状态中的指针打开决策档案(如 `{state_root}/log/`)。

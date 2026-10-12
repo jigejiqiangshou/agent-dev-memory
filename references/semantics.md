@@ -90,7 +90,7 @@ Minimal shape:
   "blockers": [],
   "next": "Add a single build.js entry that reads content/index.md and writes build/index.html.",
   "artifacts": [{ "path": "build/artifact-notes.md", "kind": "notes" }],
-  "decisions": [{ "id": "001", "topic": "URL routing = flat files", "path": "memory/log/001-routing-decision.md" }],
+  "decisions": [{ "id": "001", "topic": "URL routing = flat files", "path": "memory/log/001-20260801-routing-decision.md" }],
   "memoryStores": { "facts": "memory/facts/INDEX.json", "deadends": "memory/deadends/INDEX.json" }
 }
 ```
